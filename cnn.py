@@ -157,7 +157,7 @@ def live_input_detection(model, scaler):
             input_values = scaler.transform(input_values)
             
             prediction = model.predict(input_values).flatten()
-            conformity = 1 - np.abs(prediction - 1)  # Conformity score for binary class
+            conformity = 1 - np.abs(prediction - 0.5)  # Conformity score for binary class
             
             result = "False Data" if prediction > 0.5 else "Legit Data"
             print(f"Prediction: {result} (Confidence: {prediction[0]:.4f}, Conformity: {conformity[0]:.4f})")
